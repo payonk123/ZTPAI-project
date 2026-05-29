@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: nati
+      POSTGRES_PASSWORD: natipass
+      POSTGRES_DB: shelter
+    volumes:
+      - pgdata:/var/lib/postgresql/18/docker
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - 5050:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: adminpass
+
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+volumes:
+  pgdata:
